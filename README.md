@@ -35,3 +35,18 @@ Apuntes que tengo del Grado Superior, y que he añadido recientemente.
 
 - **Consultas Prácticas**
   - "Escribe un procedimiento almacenado que reciba un ID de empleado y devuelva su salario."
+
+## PREGUNTA 1: ¿Qué es PL/SQL y en qué se diferencia de SQL?
+
+No es que se diferencie, es un lenguaje procedimental. Un lenguaje adicional a SQL. SQL tiene varios sublenguajes, entre ellos:
+- DML
+- DDL
+- DCL
+- TCL
+
+y entre ellos NO ESTÁ el PL/SQL.
+
+- PL/SQL
+
+PL/SQL es entonces, un lenguaje de programación desarrollado por Oracle, que amplica las posibilidades y funcionalidades de SQL, al poder manipular memoria y usar estrucutras de control, como los For, While, If.
+
