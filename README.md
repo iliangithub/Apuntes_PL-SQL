@@ -5,8 +5,8 @@ Apuntes que tengo del Grado Superior, y que he añadido recientemente.
 # Preguntas Entrevista:
 
 1. Conceptos básicos de PL/SQL
-¿Qué es PL/SQL y en qué se diferencia de SQL?
-  - Explica la estructura básica de un bloque PL/SQL.
+- ¿Qué es PL/SQL y en qué se diferencia de SQL?
+- Explica la estructura básica de un bloque PL/SQL.
   - ¿Qué son las excepciones en PL/SQL? ¿Cuáles son las más comunes?
   
 2. Procedimientos, Funciones y Paquetes
