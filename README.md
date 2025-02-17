@@ -44,7 +44,7 @@ No es que se diferencie, es un lenguaje procedimental. Un lenguaje adicional a S
 - DCL
 - TCL
 
-y entre ellos NO ESTÁ el PL/SQL.
+y entre ellos **NO ESTÁ el PL/SQL.**
 
 - PL/SQL
 
