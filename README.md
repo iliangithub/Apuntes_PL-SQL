@@ -240,17 +240,75 @@ Esta notación ayuda a controlar la cantidad y la precisión de los datos numér
 - `CLOB/BLOB`, para datos grandes como textos muy extensos o imágenes.
 - `Tipos compuestos y colecciones` que trataremos más adelante.
 
-## 1.2.0 Estructuras de Control:
+## 1.2.0 Operadores Aritméticos:
 
-### 1.2.1 IF:
+Antes hemos hecho la suma, vamos a probarlas todas de nuevo:
 
-### 1.2.2 Bucle LOOP:
+### 1.2.0.1 Suma.
 
-### 1.2.3 Bucle WHILE:
+```
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Suma (2 + 3): ' || (2 + 3));
+END;
+/
+```
 
-## 1.3 Cursores:
+### 1.2.0.2 Resta.
 
-## 1.4 Excepciones o manejos de errores:
+```
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Resta (5 - 3): ' || (5 - 3));
+END;
+/
+```
+
+### 1.2.0.3 Multiplicación.
+
+```
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Multiplicación (4 * 2): ' || (4 * 2));
+END;
+/
+```
+
+### 1.2.0.4 División.
+
+```
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('División (10 / 2): ' || (10 / 2));
+END;
+/
+```
+
+### 1.2.0.5 Exponenciación.
+
+```
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Exponenciación (2 ** 3): ' || (2 ** 3));
+END;
+/
+```
+
+### 1.2.0.6 El resto.
+
+```
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Módulo (MOD(10, 3)): ' || MOD(10, 3));
+END;
+/
+```
+
+## 1.3.0 Estructuras de Control:
+
+### 1.3.1 IF:
+
+### 1.3.2 Bucle LOOP:
+
+### 1.3.3 Bucle WHILE:
+
+## 1.4 Cursores:
+
+## 1.5 Excepciones o manejos de errores:
 
 # 2.0 Preguntas Entrevista:
 
