@@ -25,8 +25,8 @@ Un bloque, es donde se escribe el código PL/SQL.
 >
 >No es válido porque:
 >- El SELECT * FROM tabla se está ejecutando como una sentencia SQL independiente, pero luego el compilador PL/SQL encuentra un bloque y se confunde por la mezcla.
-- Si lo que buscas es ejecutar ambos, deberías separarlos en diferentes ejecuciones o colocar el SELECT dentro de un bloque PL/SQL (usando, por ejemplo, un cursor o SELECT ... INTO ...).
-En resumen, cada tipo de sentencia debe estar en el contexto correcto:
+>- Si lo que buscas es ejecutar ambos, deberías separarlos en diferentes ejecuciones o colocar el SELECT dentro de un bloque PL/SQL (usando, por ejemplo, un cursor o SELECT ... INTO ...).
+>**En resumen, cada tipo de sentencia debe estar en el contexto correcto.**
 >
 
 ## 1.1.1 Tipos de datos en PL/SQL.
