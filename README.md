@@ -3,7 +3,8 @@ Apuntes que tengo del Grado Superior, y que he añadido recientemente.
 ## 1.1.0 Bloques. ¿Qué son?
 
 Un bloque, es donde se escribe el código PL/SQL.
-Yo puedo hacer perfectamente un `SELECT * FROM tabla` fuera de ese bloque, el bloque sirve solo si quiero manejar el "output" del SELECT usando PL/SQL, es decir, que el bloque sólo sirve para cuando se vaya a usar el PL/SQL.
+
+**NO PUEDES** hacer un `SELECT * FROM tabla` y luego poner un bloque (Poner el `BEGIN` y el `END`), el bloque sirve solo si quiero manejar el "output" del SELECT usando PL/SQL, es decir, que el bloque sólo sirve para cuando se vaya a usar el PL/SQL.
 
 >[!WARNING]
 >Esto es incorrecto:
