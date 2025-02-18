@@ -112,7 +112,15 @@ Si le doy arriba a "*Sentencia de Ejecución*". Me muestra eso, pero no el outpu
 ### 1.1.0.2 Ejecución de programas SUPER IMPORTANTE POR FAVOR LEER:
 
 >[!IMPORTANT]
-> El Shortcut para ejecutar los scripts es **`F5`**
+>El Shortcut para ejecutar los scripts es **`F5`**.
+>
+>Hay en realidad, varias maneras, la que he estado haciendo hasta el momento y ejecutar todo el script:
+>
+> ![image](https://github.com/user-attachments/assets/24b6742d-7f97-4550-aab4-97067372aefe)
+>
+>Entonces, la primera opción ejecutaría solo 1 bloque o mejor dicho:
+>Si no seleccionas todo el script antes de ejecutar (usando F5 o el botón de "Run Script"), SQL Developer ejecuta solo el bloque en el que se encuentre el cursor. Por ejemplo, si tu cursor está en el segundo bloque, se ejecutará únicamente ese bloque y verás solo el resultado de ese bloque.
+>
 
 ## 1.1.2 Cómo tener varios bloques a la vez:
 
