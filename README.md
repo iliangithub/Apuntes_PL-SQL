@@ -96,6 +96,18 @@ Si le doy arriba a "*Sentencia de Ejecución*". Me muestra eso, pero no el outpu
 >END;
 >/
 >```
+>
+>Y para apagarlo pues con el OFF... En cualquier caso, aquí en Oracle, está la particularidad de que donde pongas el cursor, allí se va a ejecutar.
+>
+
+>[!TIP]
+> ![image](https://github.com/user-attachments/assets/72963d8f-48bc-4d0b-b6e6-fd74082045ca)
+> Podemos hacerlo también así:
+>
+> ![image](https://github.com/user-attachments/assets/306d81d1-058b-4992-ab54-c019c60e9aae)
+>
+> Y así queda mucho más aislado.
+> ![image](https://github.com/user-attachments/assets/61a883fb-6039-41ac-9bd0-954f9468730e)
 
 ## 1.1.1 Tipos de datos en PL/SQL.
 - `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
