@@ -61,6 +61,23 @@ EXCEPTION
 END;
 ```
 
+Vamos a hacer entonces un bloque con un **Hello World**:
+
+```
+BEGIN
+
+dbms_output.put_line('Hola mundo');
+
+END;
+```
+
+>[!IMPORTANT]
+> En PL/SQL (y en SQL en general), las cadenas de texto se definen utilizando comillas simples. Esto es parte de la sintaxis del lenguaje.
+>
+Comillas simples: Se usan para delimitar un literal de cadena. Por ejemplo, 'Hola mundo' indica que se trata de una secuencia de caracteres que se interpretará literalmente.
+Comillas dobles: Se utilizan en otros contextos, por ejemplo, para delimitar identificadores (como nombres de columnas o tablas) que son sensibles a mayúsculas/minúsculas o que contienen espacios.
+>
+
 ## 1.1.1 Tipos de datos en PL/SQL.
 - `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
 - `VARCHAR2(n)` Cadena de longitud variable.
