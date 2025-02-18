@@ -88,6 +88,14 @@ Si le doy arriba a "*Sentencia de Ejecución*". Me muestra eso, pero no el outpu
 >[!WARNING]
 >Si no habilitas DBMS_OUTPUT, el mensaje se envía a un buffer interno y no se muestra en la pantalla, por eso podrías ver solo el mensaje "Procedimiento PL/SQL terminado correctamente" sin el contenido que esperas.
 >
+>Debería de quedar algo así:
+>```
+>SET SERVEROUTPUT ON;
+>BEGIN
+>  DBMS_OUTPUT.PUT_LINE('Hola Mundo');
+>END;
+>/
+>```
 
 ## 1.1.1 Tipos de datos en PL/SQL.
 - `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
