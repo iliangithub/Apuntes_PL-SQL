@@ -74,7 +74,7 @@ END;
 >[!IMPORTANT]
 > En PL/SQL (y en SQL en general), las cadenas de texto se definen utilizando comillas simples. Esto es parte de la sintaxis del lenguaje.
 >
-Comillas simples: Se usan para delimitar un literal de cadena. Por ejemplo, 'Hola mundo' indica que se trata de una secuencia de caracteres que se interpretará literalmente.
+>Comillas simples: Se usan para delimitar un literal de cadena. Por ejemplo, 'Hola mundo' indica que se trata de una secuencia de caracteres que se interpretará literalmente.
 Comillas dobles: Se utilizan en otros contextos, por ejemplo, para delimitar identificadores (como nombres de columnas o tablas) que son sensibles a mayúsculas/minúsculas o que contienen espacios.
 >
 
