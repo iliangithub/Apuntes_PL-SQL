@@ -205,6 +205,12 @@ BEGIN
 END;
 ```
 
+Y como podemos ver, nos aparece la ventanita:
+
+![image](https://github.com/user-attachments/assets/9b3196c3-6bf1-42e1-9f27-5c1e2ea3a340)
+
+Si vamos a poner texto en esa ventanita, tenemos que hacerlo con las '' comillas simples.
+
 ## 1.1.5 Tipos de datos en PL/SQL.
 - `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
 - `VARCHAR2(n)` Cadena de longitud variable.
