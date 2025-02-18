@@ -29,7 +29,7 @@ Un bloque, es donde se escribe el código PL/SQL.
 >**En resumen, cada tipo de sentencia debe estar en el contexto correcto.**
 >
 
-## El bloque en sí.
+## 1.1.1 El bloque en sí.
 
 Es básicamente esto:
 
@@ -97,7 +97,7 @@ Si le doy arriba a "*Sentencia de Ejecución*". Me muestra eso, pero no el outpu
 >/
 >```
 >
->Y para apagarlo pues con el OFF... En cualquier caso, aquí en Oracle, está la particularidad de que donde pongas el cursor, allí se va a ejecutar.
+>Y para apagarlo pues con el OFF... 
 >
 
 >[!TIP]
@@ -109,7 +109,28 @@ Si le doy arriba a "*Sentencia de Ejecución*". Me muestra eso, pero no el outpu
 > Y así queda mucho más aislado.
 > ![image](https://github.com/user-attachments/assets/61a883fb-6039-41ac-9bd0-954f9468730e)
 
-## 1.1.1 Tipos de datos en PL/SQL.
+### 1.1.0.2 Ejecución de programas SUPER IMPORTANTE POR FAVOR LEER:
+
+>[!IMPORTANT]
+> El Shortcut para ejecutar los scripts es **`F5`**
+
+## 1.1.2 Cómo tener varios bloques a la vez:
+
+Tienen que estar separados por `/`
+
+```
+BEGIN
+ DBMS_OUTPUT.PUT_LINE('Hola Mundo');
+END;
+
+/
+
+BEGIN
+ DBMS_OUTPUT.PUT_LINE('Hola Mundo2');
+END;
+```
+
+## 1.1.4 Tipos de datos en PL/SQL.
 - `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
 - `VARCHAR2(n)` Cadena de longitud variable.
 - `NUMBER` Sin especificar nada, permite almacenar números con hasta 38 dígitos y la escala es variable.
