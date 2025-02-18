@@ -1,7 +1,7 @@
-# Apuntes PL/SQL
+# 1.0 Apuntes PL/SQL
 Apuntes que tengo del Grado Superior, y que he añadido recientemente.
 
-# Tipos de datos en PL/SQL.
+## 1.1.0 Tipos de datos en PL/SQL.
 
 - VARCHAR2(n)
 - NUMBER(p, s) Números con precisión.
@@ -9,19 +9,19 @@ Apuntes que tengo del Grado Superior, y que he añadido recientemente.
 - BOOLEAN
 - CLOB/BLOB, para datos grandes como textos muy extensos o imágenes.
 
-# Estructuras de Control:
+## 1.2.0 Estructuras de Control:
 
-## IF:
+### 1.2.1 IF:
 
-## Bucle LOOP:
+### 1.2.2 Bucle LOOP:
 
-## Bucle WHILE:
+### 1.2.3 Bucle WHILE:
 
-# Cursores:
+## 1.3 Cursores:
 
-# Excepciones o manejos de errores:
+## 1.4 Excepciones o manejos de errores:
 
-# Preguntas Entrevista:
+# 2.0 Preguntas Entrevista:
 
 - **Conceptos básicos de PL/SQL**
   - ¿Qué es PL/SQL y en qué se diferencia de SQL?
