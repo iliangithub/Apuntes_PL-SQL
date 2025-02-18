@@ -1,7 +1,10 @@
 # 1.0 Apuntes PL/SQL
 Apuntes que tengo del Grado Superior, y que he añadido recientemente.
+## 1.1.0 Bloques. ¿Qué son?
 
-## 1.1.0 Tipos de datos en PL/SQL.
+
+
+## 1.1.1 Tipos de datos en PL/SQL.
 - `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
 - `VARCHAR2(n)` Cadena de longitud variable.
 - `NUMBER` Sin especificar nada, permite almacenar números con hasta 38 dígitos y la escala es variable.
@@ -28,6 +31,7 @@ Esta notación ayuda a controlar la cantidad y la precisión de los datos numér
 - `TIMESTAMP` Fecha y hora con mayor precisión, incluyendo fracciones de segundo (milisegundos o incluso microsegundos). Ideal para aplicaciones donde se requiere una precisión más fina en el registro de eventos, como en logs, transacciones o cuando se necesita medir intervalos muy cortos.
 - `BOOLEAN` ( Que pueden ser `TRUE`, `FALSE` y `NULL`. )
 - `CLOB/BLOB`, para datos grandes como textos muy extensos o imágenes.
+- `Tipos compuestos y colecciones` que trataremos más adelante.
 
 ## 1.2.0 Estructuras de Control:
 
