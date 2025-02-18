@@ -29,6 +29,38 @@ Un bloque, es donde se escribe el código PL/SQL.
 >**En resumen, cada tipo de sentencia debe estar en el contexto correcto.**
 >
 
+## El bloque en sí.
+
+Es básicamente esto:
+
+```
+BEGIN
+
+END;
+```
+
+A veces puedes declarar también variables.
+
+```
+DECLARE
+
+BEGIN
+
+END;
+```
+
+O poder controlar o manejar errores.
+
+```
+DECLARE
+
+BEGIN
+
+EXCEPTION
+
+END;
+```
+
 ## 1.1.1 Tipos de datos en PL/SQL.
 - `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
 - `VARCHAR2(n)` Cadena de longitud variable.
