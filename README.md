@@ -153,9 +153,9 @@ DECLARE
    v_cadena VARCHAR(10) := 'Fernando';
    v_fecha DATE := SYSDATE;
 BEGIN
-   DBMS_OUTPUT.PUT_LINE('El valor de la primera variable es ' || v_num || );
-   DBMS_OUTPUT.PUT_LINE('El valor de la segunda variable es ' || v_cadena || );
-   DBMS_OUTPUT.PUT_LINE('El valor de la tercera variable es ' || v_fecha || );
+   DBMS_OUTPUT.PUT_LINE('El valor de la primera variable es ' || v_num  );
+   DBMS_OUTPUT.PUT_LINE('El valor de la segunda variable es ' || v_cadena );
+   DBMS_OUTPUT.PUT_LINE('El valor de la tercera variable es ' || v_fecha );
 END;
 ```
 *Y si, literalmente hay que poner `:=` como si fuera un xxxxxx.*
@@ -163,6 +163,19 @@ END;
 Entonces...
 
 Acabamos de ver que para declarar variables se hace como se muestra arriba y para concatenar, se hace usando el **`||`**.
+
+
+Que por cierto, también lo podríamos haber hecho así:
+
+```
+DECLARE
+   v_num NUMBER(2) := 10;
+   v_cadena VARCHAR(10) := 'Fernando';
+   v_fecha DATE := SYSDATE;
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('El valor de la primera variable es ' || v_num || 'El valor de la segunda variable es ' || v_cadena );
+END;
+```
 
 ## 1.1.4 Tipos de datos en PL/SQL.
 - `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
