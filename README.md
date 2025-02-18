@@ -173,7 +173,7 @@ DECLARE
    v_cadena VARCHAR(10) := 'Fernando';
    v_fecha DATE := SYSDATE;
 BEGIN
-   DBMS_OUTPUT.PUT_LINE('El valor de la primera variable es ' || v_num || 'El valor de la segunda variable es ' || v_cadena );
+   DBMS_OUTPUT.PUT_LINE('El valor de la primera variable es ' || v_num || ' El valor de la segunda variable es ' || v_cadena );
 END;
 ```
 
