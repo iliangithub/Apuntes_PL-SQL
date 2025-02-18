@@ -2,7 +2,7 @@
 Apuntes que tengo del Grado Superior, y que he añadido recientemente.
 
 ## 1.1.0 Tipos de datos en PL/SQL.
-- `CHAR (n)` Cadena de longitud fija.
+- `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
 - `VARCHAR2(n)` Cadena de longitud variable.
 - `NUMBER` Sin especificar nada, permite almacenar números con hasta 38 dígitos y la escala es variable.
 - `NUMBER(p, s)` Números con precisión.
@@ -24,7 +24,8 @@ Esta notación ayuda a controlar la cantidad y la precisión de los datos numér
 >- ORA-12899: value too large for column (si es en una columna de tabla): Indica que el valor es mayor que el tamaño permitido.
 
 
-- `DATE`
+- `DATE` Para almacenar fechas y horas (hasta segundos).
+- `TIMESTAMP` Fecha y hora con mayor precisión, incluyendo fracciones de segundo (milisegundos o incluso microsegundos). Ideal para aplicaciones donde se requiere una precisión más fina en el registro de eventos, como en logs, transacciones o cuando se necesita medir intervalos muy cortos.
 - `BOOLEAN` ( Que pueden ser `TRUE`, `FALSE` y `NULL`. )
 - `CLOB/BLOB`, para datos grandes como textos muy extensos o imágenes.
 
