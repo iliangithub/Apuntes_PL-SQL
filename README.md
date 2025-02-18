@@ -79,6 +79,16 @@ END;
 >- Comillas dobles: Se utilizan en otros contextos, por ejemplo, para delimitar identificadores (como nombres de columnas o tablas) que son sensibles a mayúsculas/minúsculas o que contienen espacios.
 >
 
+### 1.1.0.1 Ejecución de programas:
+
+![image](https://github.com/user-attachments/assets/a8ce28db-74cf-4692-8d39-0aa6d96519e7)
+
+Si le doy arriba a "*Sentencia de Ejecución*". Me muestra eso, pero no el output que quiero, ¿Porqué?.
+
+>[!WARNING]
+>Si no habilitas DBMS_OUTPUT, el mensaje se envía a un buffer interno y no se muestra en la pantalla, por eso podrías ver solo el mensaje "Procedimiento PL/SQL terminado correctamente" sin el contenido que esperas.
+>
+
 ## 1.1.1 Tipos de datos en PL/SQL.
 - `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
 - `VARCHAR2(n)` Cadena de longitud variable.
