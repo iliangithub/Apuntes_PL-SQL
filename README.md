@@ -8,9 +8,9 @@ Un bloque, es donde se escribe el código PL/SQL.
 
 **No puedo simplemente poner una sentencia SQL sin más.**
 > [!IMPORTANT]
->Todas las instrucciones que pertenecen al bloque deben estar dentro de la estructura definida: la sección declarativa (opcional), la sección ejecutable (entre BEGIN y END) y la sección de excepciones (opcional). Esto es porque el compilador PL/SQL espera encontrar esa estructura completa para interpretar y compilar el código.
+>Todas las instrucciones que pertenecen al bloque deben estar dentro de la estructura definida: la sección declarativa (opcional), la sección ejecutable (entre `BEGIN` y `END`) y la sección de excepciones (opcional). Esto es porque el compilador PL/SQL espera encontrar esa estructura completa para interpretar y compilar el código.
 >
->Si colocas una sentencia SQL (como SELECT * FROM tabla) fuera de un bloque PL/SQL, Oracle no sabe si esa instrucción forma parte de un bloque procedural o si es una sentencia SQL independiente. Es decir, no puedes mezclar ambas en un solo contexto sin indicarle al sistema >dónde termina un bloque y dónde empieza otro.
+>Si colocas una sentencia SQL (como `SELECT * FROM tabla`) fuera de un bloque PL/SQL, Oracle no sabe si esa instrucción forma parte de un bloque procedural o si es una sentencia SQL independiente. Es decir, **no puedes mezclar ambas en un solo contexto sin indicarle al sistema dónde termina un bloque y dónde empieza otro.**
 >
 
 >[!WARNING]
@@ -22,6 +22,11 @@ Un bloque, es donde se escribe el código PL/SQL.
 >   DBMS_OUTPUT.PUT_LINE('Hola Mundo');
 >END;
 >```
+>
+>No es válido porque:
+>- El SELECT * FROM tabla se está ejecutando como una sentencia SQL independiente, pero luego el compilador PL/SQL encuentra un bloque y se confunde por la mezcla.
+- Si lo que buscas es ejecutar ambos, deberías separarlos en diferentes ejecuciones o colocar el SELECT dentro de un bloque PL/SQL (usando, por ejemplo, un cursor o SELECT ... INTO ...).
+En resumen, cada tipo de sentencia debe estar en el contexto correcto:
 >
 
 ## 1.1.1 Tipos de datos en PL/SQL.
