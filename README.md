@@ -138,6 +138,12 @@ BEGIN
 END;
 ```
 
+**Y como hemos dicho anteriormente, ahora para mostrar los dos Holamundos, tenemos que darle a F5**.
+
+## 1.1.3 Variables.
+
+
+
 ## 1.1.4 Tipos de datos en PL/SQL.
 - `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
 - `VARCHAR2(n)` Cadena de longitud variable.
