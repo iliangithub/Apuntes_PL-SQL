@@ -6,6 +6,13 @@ Un bloque, es donde se escribe el código PL/SQL.
 
 **NO PUEDES** hacer un `SELECT * FROM tabla` y luego poner un bloque (Poner el `BEGIN` y el `END`), el bloque sirve solo si quiero manejar el "output" del SELECT usando PL/SQL, es decir, que el bloque sólo sirve para cuando se vaya a usar el PL/SQL.
 
+**No puedo simplemente poner una sentencia SQL sin más.**
+> [!IMPORTANT]
+>Todas las instrucciones que pertenecen al bloque deben estar dentro de la estructura definida: la sección declarativa (opcional), la sección ejecutable (entre BEGIN y END) y la sección de excepciones (opcional). Esto es porque el compilador PL/SQL espera encontrar esa estructura completa para interpretar y compilar el código.
+>
+>Si colocas una sentencia SQL (como SELECT * FROM tabla) fuera de un bloque PL/SQL, Oracle no sabe si esa instrucción forma parte de un bloque procedural o si es una sentencia SQL independiente. Es decir, no puedes mezclar ambas en un solo contexto sin indicarle al sistema >dónde termina un bloque y dónde empieza otro.
+>
+
 >[!WARNING]
 >Esto es incorrecto:
 >```
