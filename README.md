@@ -177,7 +177,35 @@ BEGIN
 END;
 ```
 
-## 1.1.4 Tipos de datos en PL/SQL.
+Y también el valor de las variables, pues puede variar perfectamente sin problemas...
+
+```
+DECLARE
+   v_num NUMBER(2) := 10;
+
+BEGIN
+   v_num NUMBER(2) := 15;
+   DBMS_OUTPUT.PUT_LINE('El valor de la primera variable es ' || v_num );
+END;
+```
+
+## 1.1.4 Variables 2, Pedir Datos al Usuario IMPORTANTE.
+
+Para entender esto, es básicamente como un IMPUT que literalmente pide que el Usuario rellene para pues mostrarlo o lo que sea...
+
+```
+DECLARE
+   v_opcion1 NUMBER(2) := &numero_que_va_a_poner_el_usuario1;
+   v_opcion2 NUMBER(2) := &numero_que_va_a_poner_el_usuario2;
+   v_suma_de_numeros NUMBER (3);
+
+BEGIN
+   v_suma_de_numeros := v_opcion1 + v_opcion2;
+   DBMS_OUTPUT.PUT_LINE(v_opcion1 || ' + ' || v_opcion2 || ' es igual a: ' || v_suma_de_numeros);
+END;
+```
+
+## 1.1.5 Tipos de datos en PL/SQL.
 - `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
 - `VARCHAR2(n)` Cadena de longitud variable.
 - `NUMBER` Sin especificar nada, permite almacenar números con hasta 38 dígitos y la escala es variable.
