@@ -8,6 +8,7 @@ Apuntes que tengo del Grado Superior, y que he añadido recientemente.
 
 >[!IMPORTANT]
 > `p` (Precisión). Es el número total de dígitos que puede tener el número, tanto a la izquierda como a la derecha del punto decimal.
+>
 > `s` (Escala). Es el número de dígitos que se reservan para la parte decimal (a la derecha del punto).
 >
 >`NUMBER(5,2)` permite almacenar números con hasta 5 dígitos en total, de los cuales 2 son decimales. Esto significa que puedes tener números como `123.45` o `-99.99`.
@@ -16,6 +17,11 @@ Apuntes que tengo del Grado Superior, y que he añadido recientemente.
 >- Si intentas almacenar `12.345`, excederías la escala permitida (más de 2 dígitos decimales).
 Esta notación ayuda a controlar la cantidad y la precisión de los datos numéricos que se almacenan en la base de datos.
 >
+>Cuando se intenta almacenar un valor que excede la precisión o la escala definida, Oracle no realiza un ajuste o truncamiento automático, sino que lanza un error en tiempo de ejecución. Algunos ejemplos de errores que podrías ver son:
+>
+>- ORA-06502: PL/SQL: numeric or value error: Indica que el valor numérico no se ajusta al formato esperado.
+>- ORA-12899: value too large for column (si es en una columna de tabla): Indica que el valor es mayor que el tamaño permitido.
+
 
 - DATE
 - BOOLEAN ( Que pueden ser `TRUE`, `FALSE` y `NULL`.
