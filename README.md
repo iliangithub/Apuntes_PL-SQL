@@ -101,12 +101,15 @@ Si le doy arriba a "*Sentencia de Ejecución*". Me muestra eso, pero no el outpu
 >
 
 >[!TIP]
+>
 > ![image](https://github.com/user-attachments/assets/72963d8f-48bc-4d0b-b6e6-fd74082045ca)
-> Podemos hacerlo también así:
+>
+>Podemos hacerlo también así:
 >
 > ![image](https://github.com/user-attachments/assets/306d81d1-058b-4992-ab54-c019c60e9aae)
 >
 > Y así queda mucho más aislado.
+>
 > ![image](https://github.com/user-attachments/assets/61a883fb-6039-41ac-9bd0-954f9468730e)
 
 ### 1.1.0.2 Ejecución de programas SUPER IMPORTANTE POR FAVOR LEER:
@@ -142,7 +145,24 @@ END;
 
 ## 1.1.3 Variables.
 
+Se declaran arriba del todo:
 
+```
+DECLARE
+   v_num NUMBER(2) := 10;
+   v_cadena VARCHAR(10) := 'Fernando';
+   v_fecha DATE := SYSDATE;
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('El valor de la primera variable es ' || v_num || );
+   DBMS_OUTPUT.PUT_LINE('El valor de la segunda variable es ' || v_cadena || );
+   DBMS_OUTPUT.PUT_LINE('El valor de la tercera variable es ' || v_fecha || );
+END;
+```
+*Y si, literalmente hay que poner `:=` como si fuera un xxxxxx.*
+
+Entonces...
+
+Acabamos de ver que para declarar variables se hace como se muestra arriba y para concatenar, se hace usando el **`||`**.
 
 ## 1.1.4 Tipos de datos en PL/SQL.
 - `CHAR (n)` Cadena de longitud fija. *Tienes que saber de antemano la longitud*
