@@ -2,11 +2,23 @@
 Apuntes que tengo del Grado Superior, y que he añadido recientemente.
 
 ## 1.1.0 Tipos de datos en PL/SQL.
-
-- VARCHAR2(n)
+- CHAR (n) Cadena de longitud fija.
+- VARCHAR2(n) Cadena de longitud variable.
 - NUMBER(p, s) Números con precisión.
+
+>[!IMPORTANT]
+> `p` (Precisión). Es el número total de dígitos que puede tener el número, tanto a la izquierda como a la derecha del punto decimal.
+> `s` (Escala). Es el número de dígitos que se reservan para la parte decimal (a la derecha del punto).
+>
+>`NUMBER(5,2)` permite almacenar números con hasta 5 dígitos en total, de los cuales 2 son decimales. Esto significa que puedes tener números como `123.45` o `-99.99`.
+>
+>- Si intentas almacenar `1234.56`, excederías la precisión total de 5 dígitos.
+>- Si intentas almacenar `12.345`, excederías la escala permitida (más de 2 dígitos decimales).
+Esta notación ayuda a controlar la cantidad y la precisión de los datos numéricos que se almacenan en la base de datos.
+>
+
 - DATE
-- BOOLEAN
+- BOOLEAN ( Que pueden ser `TRUE`, `FALSE` y `NULL`.
 - CLOB/BLOB, para datos grandes como textos muy extensos o imágenes.
 
 ## 1.2.0 Estructuras de Control:
