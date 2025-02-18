@@ -7,13 +7,13 @@ Yo puedo hacer perfectamente un `SELECT * FROM tabla` fuera de ese bloque, el bl
 
 >[!WARNING]
 >Esto es incorrecto:
-```
-SELECT * FROM tabla
-
-BEGIN
-   DBMS_OUTPUT.PUT_LINE('Hola Mundo');
-END;
-```
+>```
+>SELECT * FROM tabla
+>
+>BEGIN
+>   DBMS_OUTPUT.PUT_LINE('Hola Mundo');
+>END;
+>```
 >
 
 ## 1.1.1 Tipos de datos en PL/SQL.
