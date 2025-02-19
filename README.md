@@ -681,6 +681,22 @@ Estos pueden ser implícitos o explícitos:
 - Los implícitos son creados automáticamente por Oracle cuando se ejecuta una consulta que devuelve una sola fila.
 - Y el explícito es cuando una consulta devuelve múltiples filas, debemos usar un cursor explícito para recorrerlas una por una.
 
+# 1.11 Triggers:
+
+Son códigos SQL que se ejecutan cuando modificamos la BD.
+
+```
+CREATE OR REPLACE TRIGGER trg_auditar_salario
+BEFORE UPDATE ON empleados
+FOR EACH ROW
+WHEN (NEW.salario <> OLD.salario) -- Solo si el salario cambia
+
+BEGIN
+    INSERT INTO historial_salarios (id_empleado, salario_anterior, salario_nuevo)
+    VALUES (:OLD.id, :OLD.salario, :NEW.salario);
+END;
+/
+```
 # 2.0 Preguntas Entrevista:
 
 - **Conceptos básicos de PL/SQL**
