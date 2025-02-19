@@ -585,7 +585,6 @@ BEGIN
 
     SELECT * INTO v_producto FROM producto WHERE codigo = v_codigo;
 
-    -- Entonces, toda la fila está almacenada en v_producto, voy a ir mostrandola de poco a poco.
     DBMS_OUTPUT.PUT_LINE('Nombre del producto: ' || v_producto.nombre );
     DBMS_OUTPUT.PUT_LINE('Código del producto: ' || v_codigo );
     DBMS_OUTPUT.PUT_LINE('Fabricante del producto: ' || v_producto.fabricante );
@@ -599,8 +598,88 @@ EXCEPTION
 END;
 ```
 
-## 1.8 Cursores:
+### 1.7.2 Excepciones propias y Raise:
 
+Antes vimos las excepciones, aunque también nosotros podemos crearlas.
+
+```
+DECLARE
+    v_codigo producto.codigo%TYPE :=  &codigo;
+    v_producto producto%ROWTYPE;
+
+    limite_precio EXCEPTION;
+BEGIN
+
+    SELECT * INTO v_producto FROM producto WHERE codigo = v_codigo;
+
+    IF v_producto.precio >= THEN
+
+       RAISE limite_precio;
+       --Para lanzar la excepción se hace con un Raise.
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('Nombre del producto: ' || v_producto.nombre );
+    DBMS_OUTPUT.PUT_LINE('Código del producto: ' || v_codigo );
+    DBMS_OUTPUT.PUT_LINE('Fabricante del producto: ' || v_producto.fabricante );
+    DBMS_OUTPUT.PUT_LINE('Precio del producto: ' || v_producto.precio );
+ 
+EXCEPTION
+    WHEN no_data_found THEN
+         DBMS_OUTPUT.PUT_LINE('No existe el producto '|| v_codigo);
+    WHEN limite_precio THEN
+         DBMS_OUTPUT.PUT_LINE('Se ha superado el limite '|| v_codigo);
+    WHEN others THEN
+         DBMS_OUTPUT.PUT_LINE('Error');
+END;
+```
+
+### 1.7.2 RAISE_APPLICATION_ERROR:
+
+Es parecido al anterior, pero este es a nivel de aplicación.
+
+## 1.8 Procedimientos:
+
+Si queremos reutilizar parte de nuestro código, lo hacemos usando los procedimientos o también podemos utilizar las funciones.
+
+La diferencia principal entre el procedimiento y la funcion, es que el procedimiento NO devuelve nada.
+
+**Función:**
+- Debe devolver un valor mediante la cláusula RETURN.
+- Pueden ser invocadas en una sentencia SQL si son determinísticas y cumplen ciertos requisitos.
+- Se usa cuando se necesita calcular y retornar un valor a partir de unos parámetros.
+
+**Procedimiento:**
+- No está obligado a devolver un valor.
+- Puede devolver valores mediante parámetros OUT o IN OUT, pero no a través de RETURN.
+- No se pueden invocar directamente dentro de sentencias SQL, se ejecutan mediante bloques PL/SQL o llamadas desde aplicaciones.
+- Se utiliza para realizar una acción o proceso, como insertar registros, actualizar datos, etc.
+
+
+En resumen, la principal diferencia es que una **función devuelve un valor y puede utilizarse en expresiones SQL**, mientras que un procedimiento se utiliza para ejecutar acciones sin requerir devolver un valor directamente.
+
+>[!IMPORTANT]
+>Las funciones están diseñadas para ser "puras", es decir, para calcular y retornar un valor sin causar efectos secundarios (como modificar datos en la base de datos). Esto es especialmente importante cuando se usan en sentencias SQL, ya que Oracle espera que las funciones llamadas en SQL no alteren el estado de la base de datos. Si una función modifica datos, pueden ocurrir errores o comportamientos inesperados.
+>
+>Porque claro, la pregunta que me surge es si puedo INSERT en una función y no.
+>
+>Las operaciones en la función tienen que ser determinísticas y sin efectos secundarios.
+
+```
+CREATE OR REPLACE PROCEDURE infoProducto()
+```
+
+## 1.9 Funciones:
+
+## 1.10 Cursores:
+
+Los cursores nos permiten almacenar y recorrer un conjunto de datos.
+
+Un cursor en PL/SQL es un mecanismo que permite manejar el resultado de una consulta SELECT de manera fila por fila. Se usan cuando una consulta devuelve más de una fila y se necesita procesarlas individualmente.
+
+Estos pueden ser implícitos o explícitos:
+
+- Los implícitos son creados automáticamente por Oracle cuando se ejecuta una consulta que devuelve una sola fila.
+- Y el explícito es cuando una consulta devuelve múltiples filas, debemos usar un cursor explícito para recorrerlas una por una.
 
 # 2.0 Preguntas Entrevista:
 
@@ -653,3 +732,76 @@ PL/SQL es entonces, un lenguaje de programación desarrollado por Oracle, que am
 >[!TIP]
 >Un lenguaje procedimental es un tipo de lenguaje de programación basado en la ejecución secuencial de instrucciones organizadas en procedimientos o funciones. Estos lenguajes siguen un enfoque estructurado donde el código se divide en bloques reutilizables que realizan tareas específicas.
 >
+
+## PREGUNTA 2: Explica la estructura básica de un bloque PL/SQL.
+
+```
+DECLARE  -- (Opcional)
+   -- Declaración de variables, constantes, cursores, etc.
+BEGIN  -- (Obligatorio)
+   -- Código ejecutable (consultas, asignaciones, lógica de negocio, etc.)
+EXCEPTION  -- (Opcional)
+   -- Manejo de errores (cuando ocurren excepciones)
+END;
+/
+```
+
+- DECLARE, sirve para declarar las variables, los %ROWTYPE y %TYPE y también excepciones que se usarán en ese bloque.
+- BEGIN, es donde contendrá el código en sí.
+- EXCEPTION, control y manejo de errores.
+- END, para marcar el final del bloque
+- / se usa si quieres poner debajo otro bloque.
+
+## PREGUNTA 3: ¿Qué son las excepciones en PL/SQL? ¿Cuáles son las más comunes?
+
+Son eventos que interrumpen el flujo normal de ejecución de un bloque de código debido a un error en tiempo de ejecución. Estas excepciones pueden ser manejadas con la sección EXCEPTION para evitar que el programa falle inesperadamente.
+
+Hay de dos tipos, las predefinidas, que para eso habrá que mirar la documentación.
+y las definidas y propias.
+
+| Excepción              | Error Code  | Descripción |
+|------------------------|------------|--------------------------------------------------|
+| `NO_DATA_FOUND`       | ORA-01403   | No se encontraron filas en una consulta `SELECT INTO`. |
+| `TOO_MANY_ROWS`       | ORA-01422   | Una consulta `SELECT INTO` devolvió más de una fila. |
+| `ZERO_DIVIDE`         | ORA-01476   | Se intentó dividir un número por cero. |
+| `INVALID_NUMBER`      | ORA-01722   | Conversión inválida de caracteres a número. |
+| `VALUE_ERROR`        | ORA-06502   | Error de desbordamiento numérico o cadena demasiado larga. |
+| `CURSOR_ALREADY_OPEN` | ORA-06511   | Se intentó abrir un cursor que ya estaba abierto. |
+
+## PREGUNTA 4: ¿Cuál es la diferencia entre un procedimiento y una función en PL/SQL?
+
+La diferencia principal, es que:
+
+- Las funciones, necesitan tener comandos determinísticos y que no alteren la BD, y devuelve un OUTPUT, un resultado. Se ejecuta en expresiones.
+- El procedimiento no necesariamente sirve para devolver resultados, si no que realiza tareas. (acciones, transacciones, validaciones). Se ejecuta con un `EXEC` dentro del bloque.
+
+## PREGUNTA 10: ¿Qué es un trigger y para qué se usa?
+
+Un trigger (o disparador) es un bloque de código PL/SQL que se asocia a una tabla o vista y que se ejecuta automáticamente en respuesta a eventos específicos en la base de datos, como pueden ser operaciones de INSERT, UPDATE o DELETE.
+
+¿Para qué se usa?
+- **Mantener la integridad de los datos:**
+  Puedes usar triggers para asegurarte de que se cumplan ciertas reglas o restricciones de negocio cada vez que se modifica la tabla. Por ejemplo, evitar que se inserten valores fuera de un rango permitido.
+
+- **Automatizar procesos:**
+  Permiten ejecutar acciones automáticamente cuando ocurre un evento, como actualizar datos en tablas relacionadas, enviar notificaciones o registrar auditorías.
+
+- **Validación y seguridad:**
+  Se pueden utilizar para validar datos antes de que se inserten o actualicen, o incluso para prevenir cambios que puedan violar la integridad referencial.
+
+- **Auditoría de cambios:**
+  Es común utilizar triggers para llevar un registro de quién realizó cambios en la base de datos y cuándo, insertando registros en tablas de auditoría.
+
+## PREGUNTA 21: ¿Qué diferencia hay entre DELETE y TRUNCATE?
+
+**TRUNCATE TABLE:**
+Es una sentencia DDL que elimina todas las filas de la tabla de manera rápida y eficiente, reseteando, en muchos casos, los contadores de auto_increment.
+
+**y el DELETE es DML:**
+Si necesitas eliminar solo ciertos registros de una tabla, debes utilizar la sentencia DELETE junto con la cláusula WHERE.
+
+Si quisieramos eliminar la cuenta entera de un usuario, sus compras, etc... Necesitamos:
+
+**Eliminar manualmente en el orden correcto.**
+
+Si no tienes configurado el ON DELETE CASCADE, deberás borrar los datos de las tablas hijas primero y luego el registro del usuario. Esto es importante para no violar la integridad referencial.
