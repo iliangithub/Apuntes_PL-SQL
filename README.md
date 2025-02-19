@@ -523,9 +523,84 @@ END;
 >- Ninguna fila: Se lanza la excepción NO_DATA_FOUND.
 >
 
-## 1.7 Cursores:
+## 1.6 Atributo %TYPE y %ROWTYPE:
 
-## 1.8 Excepciones o manejos de errores:
+### 1.6.1 %TYPE:
+
+El atributo %TYPE se utiliza en PL/SQL para declarar una variable con el mismo tipo de datos que otra columna de una tabla o que otra variable. Esto tiene varias ventajas:
+
+- **Consistencia:** Si cambias el tipo de dato de la columna en la tabla, las variables declaradas con %TYPE se actualizan automáticamente.
+- **Facilidad de mantenimiento:** Evitas repetir el tipo de dato en el código, reduciendo errores y manteniendo la coherencia.
+
+>[!IMPORTANT]
+>No, no se utiliza %TYPE porque no sepas cuál es el tipo de dato, sino para garantizar consistencia y facilitar el mantenimiento.
+>
+
+```
+DECLARE
+    v_codigo producto.codigo%TYPE :=  &codigo;
+    v_nombre producto.nombre%TYPE;
+BEGIN
+    SELECT nombre INTO v_nombre FROM producto WHERE codigo = v_codigo;
+    DBMS_OUTPUT.PUT_LINE('Nombre del producto ' || v_nombre || 'y el código es: ' || v_codigo);
+END;
+```
+
+La tabla es "producto" y "código", una simple columna de muchas.
+
+### 1.6.2 %ROWTYPE:
+
+Si quiero almacenar toda una fila.
+
+```
+DECLARE
+    v_codigo producto.codigo%TYPE :=  &codigo;
+    v_producto producto%ROWTYPE;
+
+BEGIN
+
+    SELECT * INTO v_producto FROM producto WHERE codigo = v_codigo;
+
+    -- Entonces, toda la fila está almacenada en v_producto, voy a ir mostrandola de poco a poco.
+    DBMS_OUTPUT.PUT_LINE('Nombre del producto: ' || v_producto.nombre );
+    DBMS_OUTPUT.PUT_LINE('Código del producto: ' || v_codigo );
+    DBMS_OUTPUT.PUT_LINE('Fabricante del producto: ' || v_producto.fabricante );
+    DBMS_OUTPUT.PUT_LINE('Precio del producto: ' || v_producto.precio );
+
+END;
+```
+
+## 1.7 Excepciones o manejos de errores:
+
+https://www.ibm.com/docs/es/db2/11.5?topic=plsql-exception-handling
+
+Se hace con el EXCEPTION
+
+```
+DECLARE
+    v_codigo producto.codigo%TYPE :=  &codigo;
+    v_producto producto%ROWTYPE;
+
+BEGIN
+
+    SELECT * INTO v_producto FROM producto WHERE codigo = v_codigo;
+
+    -- Entonces, toda la fila está almacenada en v_producto, voy a ir mostrandola de poco a poco.
+    DBMS_OUTPUT.PUT_LINE('Nombre del producto: ' || v_producto.nombre );
+    DBMS_OUTPUT.PUT_LINE('Código del producto: ' || v_codigo );
+    DBMS_OUTPUT.PUT_LINE('Fabricante del producto: ' || v_producto.fabricante );
+    DBMS_OUTPUT.PUT_LINE('Precio del producto: ' || v_producto.precio );
+
+EXCEPTION
+    WHEN no_data_found THEN
+         DBMS_OUTPUT.PUT_LINE('No existe el producto '|| v_codigo);
+    WHEN others THEN
+         DBMS_OUTPUT.PUT_LINE('Error');
+END;
+```
+
+## 1.8 Cursores:
+
 
 # 2.0 Preguntas Entrevista:
 
@@ -575,3 +650,6 @@ y entre ellos **NO ESTÁ el PL/SQL.**
 
 PL/SQL es entonces, un lenguaje de programación desarrollado por Oracle, que amplica las posibilidades y funcionalidades de SQL, al poder manipular memoria y usar estrucutras de control, como los For, While, If.
 
+>[!TIP]
+>Un lenguaje procedimental es un tipo de lenguaje de programación basado en la ejecución secuencial de instrucciones organizadas en procedimientos o funciones. Estos lenguajes siguen un enfoque estructurado donde el código se divide en bloques reutilizables que realizan tareas específicas.
+>
