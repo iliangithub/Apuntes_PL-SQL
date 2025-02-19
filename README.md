@@ -280,6 +280,8 @@ END;
 /
 ```
 
+No se puede dividir entre 0.
+
 ### 1.2.0.5 Exponenciación.
 
 ```
@@ -297,10 +299,92 @@ BEGIN
 END;
 /
 ```
+## 1.2.1 Operadores Lógicos y Relacionales o de Comparación:
+
+Los operadores relacionales o de comparación son:
+- `>`
+- `>=`
+- `<=`
+- `<`
+- `=` (este es de comparación, no es de asignación, de asignarle un valor, como era el `:=`).
+- `!=` (y este es el distinto, el que no es X cosa. también se puede usar `<>`).
+  
+### 1.2.1.1 Operador Lóg. AND.
+
+```
+DECLARE
+   v_numero1 NUMBER(2) := 1;
+   v_numero2 NUMBER(2) := 2;
+   v_numero3 NUMBER(2) := 3;
+
+BEGIN
+   IF v_numero1 >= v_numero2 AND v_numero1 >= v_numero3 THEN
+        DBMS_OUTPUT.PUT_LINE(v_numero1 || ' es el mayor número de entre esos.');
+   END IF;
+END;
+```
+En este caso, no va a devolver nada.
+
+### 1.2.1.2 Operador Lóg. OR.
+
+Lo mismo que para antes
+
+### 1.2.1.3 Operador Lóg. NOT.
+
+Lo mismo que para lo de antes.
 
 ## 1.3.0 Estructuras de Control:
 
 ### 1.3.1 IF:
+
+Vamos a hacer un ejercicio muy sencillo:
+
+Esta es la sintáxis.
+```
+BEGIN
+
+   IF    la condición   THEN
+                         ;
+   END IF;
+
+END;
+```
+
+y este es el ejercicio, va a comparar el valor numérico de las 3 variables:
+```
+DECLARE
+   v_numero1 NUMBER(2) := 1;
+   v_numero2 NUMBER(2) := 2;
+   v_numero3 NUMBER(2) := 3;
+
+BEGIN
+   IF v_numero1 >= v_numero2 AND v_numero1 >= v_numero3 THEN
+        DBMS_OUTPUT.PUT_LINE(v_numero1 || ' es el mayor número de entre esos.');
+   END IF;
+END;
+```
+
+Y **NO DEBERÍA de mostrar nada en pantalla, porque el 1 es menor que esos dos.**
+
+```
+DECLARE
+   v_numero1 NUMBER(2) := 1;
+   v_numero2 NUMBER(2) := 2;
+   v_numero3 NUMBER(2) := 3;
+
+BEGIN
+   IF v_numero1 >= v_numero2 AND v_numero1 >= v_numero3 THEN
+        DBMS_OUTPUT.PUT_LINE(v_numero1 || ' es el mayor número de entre esos.');
+   ELSIF v_numero2 >= v_numero3 THEN
+        DBMS_OUTPUT.PUT_LINE(v_numero2 || ' es el mayor número de entre esos.'); 
+   ELSE
+        DBMS_OUTPUT.PUT_LINE(v_numero3 || ' es el mayor número de entre esos.'); 
+   END IF;
+
+END;
+```
+
+**Aquí como vemos, manejamos `elsif`
 
 ### 1.3.2 Bucle LOOP:
 
