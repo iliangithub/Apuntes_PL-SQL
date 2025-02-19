@@ -386,13 +386,146 @@ END;
 
 **Aquí como vemos, manejamos `elsif`
 
-### 1.3.2 Bucle LOOP:
+### 1.3.2 Case:
 
-### 1.3.3 Bucle WHILE:
+Es casi que lo mismo que el if.
 
-## 1.4 Cursores:
+```
+DECLARE
+    v_dia_introducido NUMBER(2) := &dia;
+BEGIN
 
-## 1.5 Excepciones o manejos de errores:
+    CASE v_dia_introducido
+        WHEN 1 THEN
+           DBMS_OUTPUT.PUT_LINE('Lunes');
+        WHEN 2 THEN
+           DBMS_OUTPUT.PUT_LINE('Martes');
+        WHEN 3 THEN
+           DBMS_OUTPUT.PUT_LINE('Miércoles');
+        WHEN 4 THEN
+           DBMS_OUTPUT.PUT_LINE('Jueves');
+        ELSE
+          DBMS_OUTPUT.PUT_LINE('Descansitoo');
+      END CASE;
+END;
+```
+
+### 1.3.3 Bucle For:
+Recordemos que esto sirve para cuando sabemos con exactitud cuando termina.
+
+```
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Esto es un bucle for');
+    FOR (v_num_inicial in 1..10) LOOP
+        DBMS_OUTPUT.PUT_LINE(v_num_inicial);
+    END LOOP;
+END;
+```
+
+¿Y como hace para ir de 2 en 2?
+
+```
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Esto es un bucle for');
+    FOR v_num_inicial IN 1..10 BY 2 LOOP
+        DBMS_OUTPUT.PUT_LINE(v_num_inicial);
+    END LOOP;
+END;
+```
+
+Y también podemos hacerlo al revés, de 10 a 1:
+
+```
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Esto es un bucle for');
+    FOR v_num_inicial IN REVERSE 1..10 LOOP
+        DBMS_OUTPUT.PUT_LINE(v_num_inicial);
+    END LOOP;
+END;
+```
+
+### 1.3.4 Bucle WHILE:
+
+```
+DECLARE
+    v_num_inicial NUMBER(2) := 1;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Esto es un bucle while');
+    WHILE (v_num_inicial <= 10) LOOP
+        DBMS_OUTPUT.PUT_LINE(v_num_inicial);
+        v_num_inicial := v_num_inicial + 1;
+    END LOOP;
+END;
+```
+### 1.3.5 Bucle LOOP:
+
+El `EXIT WHEN` podemos ponerlo donde queramos, es útil para los cursores.
+
+```
+DECLARE
+    v_num_inicial NUMBER(2) := 1;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Esto es un bucle LOOP');
+
+    LOOP
+       
+        DBMS_OUTPUT.PUT_LINE(v_num_inicial);
+        EXIT WHEN v_num_inicial = 10;
+        v_num_inicial := v_num_inicial + 1;
+    END LOOP;
+END;
+```
+## 1.4 Arrays:
+
+Para declarar un array, primero tenemos que declarar un tipo: **`TYPE alumnos_arr IS VARRAY(3) OF VARCHAR2 (20);`**
+```
+DECLARE
+   TYPE alumnos_arr IS VARRAY(3) OF VARCHAR2(20);
+   v_alumnos alumnos_arr := alumnos_arr('Fernando', 'Manuel', 'Roberto');
+
+   TYPE notas_arr IS VARRAY(3) OF NUMBER(2);
+   v_notas notas_arr := notas_arr('10','5','6');
+
+BEGIN
+   FOR v_num_inicial IN 1..v_alumnos.count LOOP
+       DBMS_OUTPUT.PUT_LINE('El alumno: ' || v_alumnos(v_num_inicial) || ' y su nota es de: ' || v_notas(v_num_inicial));
+   END LOOP;
+END;
+```
+## 1.5 SELECT INTO:
+
+```
+DECLARE
+   v_total NUMBER(8);
+BEGIN
+   SELECT count(*) INTO v_total FROM producto;
+
+   DBMS_OUTPUT.PUT_LINE('Total de productos: ' || v_total);
+END;
+```
+
+Si quisieramos almacenar varias cosas en varias variables:
+
+```
+DECLARE
+   v_total NUMBER(8);
+   v_suma_productos NUMBER(8);
+BEGIN
+   SELECT count(*),sum(precio) INTO v_total, v_suma_productos FROM producto;
+
+   DBMS_OUTPUT.PUT_LINE('Total de productos: ' || v_total);
+   DBMS_OUTPUT.PUT_LINE('Y el precio total es de: ' || v_suma_productos);
+END;
+```
+>[!IMPORTANT]
+>SELECT INTO, **Siempre tiene que devolver 1 valor/registro**.
+>- Más de una fila: Se genera la excepción ORA-01422: exact fetch returns more than requested number of rows.
+>- Ninguna fila: Se lanza la excepción NO_DATA_FOUND.
+>
+
+## 1.7 Cursores:
+
+## 1.8 Excepciones o manejos de errores:
 
 # 2.0 Preguntas Entrevista:
 
