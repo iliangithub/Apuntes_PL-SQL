@@ -14,7 +14,7 @@ Un bloque, es donde se escribe el código PL/SQL.
 >
 
 >[!WARNING]
->Esto es incorrecto:
+>🚫Esto es incorrecto:
 >```
 >SELECT * FROM tabla
 >
@@ -28,7 +28,13 @@ Un bloque, es donde se escribe el código PL/SQL.
 >- Si lo que buscas es ejecutar ambos, deberías separarlos en diferentes ejecuciones o colocar el SELECT dentro de un bloque PL/SQL (usando, por ejemplo, un cursor o SELECT ... INTO ...).
 >**En resumen, cada tipo de sentencia debe estar en el contexto correcto.**
 >
-
+>✅Sin embargo, esto si
+>
+>```
+> BEGIN
+>  INSERT INTO empleados (id, nombre) VALUES (1, 'Ana');
+> END;
+```
 ## 1.1.1 El bloque en sí.
 
 Es básicamente esto:
