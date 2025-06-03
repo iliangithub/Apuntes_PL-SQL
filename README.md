@@ -34,7 +34,8 @@ Un bloque, es donde se escribe el código PL/SQL.
 > BEGIN
 >  INSERT INTO empleados (id, nombre) VALUES (1, 'Ana');
 > END;
-```
+>```
+
 ## 1.1.1 El bloque en sí.
 
 Es básicamente esto:
