@@ -779,8 +779,10 @@ END;
 
 Son eventos que interrumpen el flujo normal de ejecución de un bloque de código debido a un error en tiempo de ejecución. Estas excepciones pueden ser manejadas con la sección EXCEPTION para evitar que el programa falle inesperadamente.
 
-Hay de dos tipos, las predefinidas, que para eso habrá que mirar la documentación.
-y las definidas y propias.
+Hay de dos tipos:
+
+1️⃣**Las predefinidas, que para eso habrá que mirar la documentación.**
+
 
 | Excepción              | Error Code  | Descripción |
 |------------------------|------------|--------------------------------------------------|
@@ -790,6 +792,20 @@ y las definidas y propias.
 | `INVALID_NUMBER`      | ORA-01722   | Conversión inválida de caracteres a número. |
 | `VALUE_ERROR`        | ORA-06502   | Error de desbordamiento numérico o cadena demasiado larga. |
 | `CURSOR_ALREADY_OPEN` | ORA-06511   | Se intentó abrir un cursor que ya estaba abierto. |
+
+2️⃣**Definidas por el programador (personalizadas)**
+
+Tú puedes definir tus propias excepciones, como:
+
+```
+my_error EXCEPTION;
+```
+
+Y luego lanzarla con:
+
+```
+RAISE my_error;
+```
 
 ## PREGUNTA 4: ¿Cuál es la diferencia entre un procedimiento y una función en PL/SQL?
 
